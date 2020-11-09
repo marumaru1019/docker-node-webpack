@@ -1,0 +1,17 @@
+# docker-composeのバージョンを指定
+version: "3"
+
+services:
+  app:
+  # 同じディレクトリ内のDockerfileをbuildする
+    build: .
+  #  コンテナの名前をつける(任意)
+    container_name: nodesam
+    # コンテナを起動させ続けられる。
+    tty: true
+    # ディレクトリ内のファイルをコンテナ内のappディレクトリにマウントする
+    volumes: 
+      - .:/app
+      # コンテナ側の1000番のポートをホスト側の8080番のポートにマウントする。
+    ports:
+      - "8080:8080"
